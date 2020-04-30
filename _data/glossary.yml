@@ -1,6 +1,9 @@
 phan_chuong: <span data-tippy-content="pltchuong@gmail.com">Phan Chương</span>
 tomasz_drabas: <span data-tippy-content="tomasz.drabas@databricks.com">Tomasz Drabas</span>
 denny_lee: <span data-tippy-content="denny.lee@databricks.com">Denny Lee</span>
+
+cto: <span data-tippy-content="Giám đốc công nghệ">CTO</span>
+
 driver: <span data-tippy-content="chương trình điều khiển">driver</span>
 executor: <span data-tippy-content="chương trình con">executor</span>
 job: <span data-tippy-content="đầu việc">job</span>
