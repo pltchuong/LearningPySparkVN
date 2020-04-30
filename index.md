@@ -1,8 +1,6 @@
-# Learning PySpark
+Tác giả: **{{site.data.glossary.tomasz_drabas}}** và **{{site.data.glossary.denny_lee}}**
 
-*Tác giả: __{{site.data.glossary.tomasz_drabas}}__ và __{{site.data.glossary.denny_lee}}__*
-
-*Người dịch: __{{site.data.glossary.phan_chuong}}__*
+Người dịch: **{{site.data.glossary.phan_chuong}}**
 
 <ul>
   {% for post in site.posts %}
