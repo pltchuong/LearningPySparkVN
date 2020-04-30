@@ -1,3 +1,5 @@
 # Learning PySpark
-*Written by __Tomasz Drabas__ and __Denny Lee__*
-*Translated by __Phan Chuong__*
+
+*Tác giả: __Tomasz Drabas__ và __Denny Lee__*
+
+*Người dịch: __Phan Chương__*
