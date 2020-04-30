@@ -12,7 +12,7 @@ dataset: <span data-tippy-content="bộ dữ liệu cải tiến">DataFrame</spa
 notebook: <span data-tippy-content="môi trường giúp người dùng tương tác trực tiếp với dữ liệu">notebook</span>
 data_analyst: <span data-tippy-content="chuyên gia phân tích dữ liệu">data analyst</span>
 data_scientist: <span data-tippy-content="chuyên gia khoa học dữ liệu">data scientist</span>
-
+cloud: <span data-tippy-content="hệ thống máy chủ trên internet">cloud</span>
 
 driver: <span data-tippy-content="chương trình điều khiển">driver</span>
 executor: <span data-tippy-content="chương trình con">executor</span>
