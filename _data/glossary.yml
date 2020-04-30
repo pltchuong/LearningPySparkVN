@@ -10,6 +10,9 @@ rdd: <span data-tippy-content="dữ liệu được phân tán có khả năng t
 dataframe: <span data-tippy-content="bộ dữ liệu">DataFrame</span>
 dataset: <span data-tippy-content="bộ dữ liệu cải tiến">DataFrame</span>
 notebook: <span data-tippy-content="môi trường giúp người dùng tương tác trực tiếp với dữ liệu">notebook</span>
+data_analyst: <span data-tippy-content="chuyên gia phân tích dữ liệu">data analyst</span>
+data_scientist: <span data-tippy-content="chuyên gia khoa học dữ liệu">data scientist</span>
+
 
 driver: <span data-tippy-content="chương trình điều khiển">driver</span>
 executor: <span data-tippy-content="chương trình con">executor</span>
