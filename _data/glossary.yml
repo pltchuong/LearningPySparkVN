@@ -9,7 +9,7 @@ data_science: <span data-tippy-content="khoa học dữ liệu">data science</sp
 rdd: <span data-tippy-content="dữ liệu được phân tán có khả năng tự phục hồi">Resilient Distributed Dataset</span>
 dataframe: <span data-tippy-content="bộ dữ liệu">DataFrame</span>
 dataset: <span data-tippy-content="bộ dữ liệu cải tiến">DataFrame</span>
-
+notebook: <span data-tippy-content="môi trường giúp người dùng tương tác trực tiếp với dữ liệu">notebook</span>
 
 driver: <span data-tippy-content="chương trình điều khiển">driver</span>
 executor: <span data-tippy-content="chương trình con">executor</span>

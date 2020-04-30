@@ -20,3 +20,5 @@ Các chủ đề bao gồm:
 ## Apache Spark là gì?
 
 Apache Spark là một nền tảng truy vấn và xử lý dữ liệu phân tán mã nguồn mở. Nó linh hoạt và có khả năng mở rộng giống như MapReduce nhưng nhanh hơn rất nhiều: hơn 100 lần so với Apache Hadoop nếu đọc dữ liệu trên bộ nhớ và hơn 10 lần nếu đọc dữ liệu từ ổ cứng.
+
+Ta có thể dễ dàng dùng Apache Spark để đọc, chuyển đổi và tổng hợp dữ liệu, cũng như chạy và triển khai các mô hình thống kê dữ liệu phức tạp. Ta có thể dùng Java, Scala, Python, R và SQL để truy xuất các hàm của Spark APIs. Apache Spark có thể được dùng để viết ra cả một ứng dụng hoàn chỉnh, hoặc có thể đóng gói thành thư viện để triển khai trên các hệ thống máy chủ, hoặc cũng có thể dùng cho các phân tích *ngắn gọn* thông qua các {{site.data.glossary.notebook}} (như Jupyter, Spark-Notebook, Databricks, và Apache Zeppelin).
