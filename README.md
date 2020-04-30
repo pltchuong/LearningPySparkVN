@@ -6,6 +6,8 @@ Apache Spark nhanh, dẽ dùng, cho phép ta xử lý các kiểu dữ liệu đ
 
 Trong chương này, ta sẽ học những yếu tố cơ bản nhất để có thể hiểu về Apache Spark. Ta sẽ nói về các khái niệm trong Spark Jobs và Spark APIs, giới thiệu về kiến trúc và tìm hiểu các khả năng của Spark 2.0.
 
+<a href="#" data-toggle="tooltip" data-original-title="Test tooltip">Jekyll</a> is my favorite tool for building websites.
+
 Các chủ đề bao gồm:
 - Apache Spark là gì?
 - Spark Jobs và Spark APIs
