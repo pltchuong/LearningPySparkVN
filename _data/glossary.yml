@@ -3,6 +3,9 @@ tomasz_drabas: <span data-tippy-content="tomasz.drabas@databricks.com">Tomasz Dr
 denny_lee: <span data-tippy-content="denny.lee@databricks.com">Denny Lee</span>
 
 cto: <span data-tippy-content="Giám đốc công nghệ">CTO</span>
+streaming: <span data-tippy-content="liên tục">streaming</span>
+machine_learning: <span data-tippy-content="máy học tự động">machine learning</span>
+data_science: <span data-tippy-content="khoa học dữ liệu">data science</span>
 
 driver: <span data-tippy-content="chương trình điều khiển">driver</span>
 executor: <span data-tippy-content="chương trình con">executor</span>
