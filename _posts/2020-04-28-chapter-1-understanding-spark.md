@@ -40,3 +40,5 @@ Trong phần này, ta sẽ xem qua về Spark Jobs và Spark APIs. Đây là nh�
 Một ứng dụng Spark sẽ luôn khởi tạo ra một {{site.data.glossary.driver}} trên {{site.data.glossary.master_node}} (để quản lý các {{site.data.glossary.job}}), rồi chỉ đạo các {{site.data.glossary.executor}} chạy trên các {{site.data.glossary.worker_node}} (để thực hiện các {{site.data.glossary.task}}) như mô hình sau:
 
 ![]({{ "/assets/images/B05793_01_02.jpg" | relative_url }})
+
+<span class="text-capitalize">{{ site.data.glossary.driver}}</span> sẽ quyết định số lượng và việc phân bổ các {{site.data.glossary.task}} cho các {{site.data.glossary.executor}} dựa trên một mô hình đồ thị được sinh ra cho mỗi {{site.data.glossary.job}}. Chú ý là mỗi {{site.data.glossary.worker_node}} có thể xử lý nhiều {{site.data.glossary.task}} của nhiều {{site.data.glossary.job}} khác nhau.
