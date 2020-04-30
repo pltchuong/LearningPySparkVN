@@ -13,7 +13,7 @@ Trong chương này, ta sẽ học những thành phần cơ bản nhất của 
 Các chủ đề bao gồm:
 - Apache Spark là gì?
 - Spark Jobs và Spark APIs
-- Khái quát về cấu trúc dữ liệu {{site.data.glossary.rdd}} (RDD), {{site.data.glossary.dataframe}}, và {{site.data.glossary.dataset}}
+- Khái quát về cấu trúc dữ liệu {{site.data.glossary.resilient_distributed_dataset}} (RDD), {{site.data.glossary.dataframe}}, và {{site.data.glossary.dataset}}
 - Khái quát về dự án tối ưu hoá Catalyst Optimizer và dự án Tungsten
 - Khái quát về thiết kế kiến trúc của Spark 2.0
 
