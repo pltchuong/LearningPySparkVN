@@ -35,3 +35,8 @@ Nguồn: Apache Spark chính là chiếc máy điện thoại thông minh trong 
 
 ## Spark Jobs và Spark APIs
 Trong phần này, ta sẽ xem qua về Spark Jobs và Spark APIs. Đây là những kiến thức nền tảng cho phần sau, kiến trúc của Spark 2.0.
+
+### Quy trình xử lý dữ liệu
+Một ứng dụng Spark sẽ luôn khởi tạo ra một {{site.data.glossary.driver}} trên {{site.data.glossary.master_node}} (để quản lý các {{site.data.glossary.job}}), rồi chỉ đạo các {{site.data.glossary.executor}} chạy trên các {{site.data.glossary.worker_node}} (để thực hiện các {{site.data.glossary.task}}) như mô hình sau:
+
+![]({{ "/assets/images/B05793_01_02.jpg" | relative_url }})
