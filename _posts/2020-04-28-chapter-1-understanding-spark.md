@@ -16,3 +16,7 @@ Các chủ đề bao gồm:
 - Khái quát về cấu trúc dữ liệu {{site.data.glossary.rdd}} (RDD), {{site.data.glossary.dataframe}}, và {{site.data.glossary.dataset}}
 - Khái quát về dự án tối ưu hoá Catalyst Optimizer và dự án Tungsten
 - Khái quát về thiết kế kiến trúc của Spark 2.0
+
+## Apache Spark là gì?
+
+Apache Spark là một nền tảng truy vấn và xử lý dữ liệu phân tán mã nguồn mở. Nó linh hoạt và có khả năng mở rộng giống như MapReduce nhưng nhanh hơn rất nhiều: hơn 100 lần so với Apache Hadoop nếu đọc dữ liệu trên bộ nhớ và hơn 10 lần nếu đọc dữ liệu từ ổ cứng.
