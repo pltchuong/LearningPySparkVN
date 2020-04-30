@@ -42,3 +42,9 @@ Một ứng dụng Spark sẽ luôn khởi tạo ra một {{site.data.glossary.d
 ![]({{ "/assets/images/B05793_01_02.jpg" | relative_url }})
 
 <span class="text-capitalize">{{ site.data.glossary.driver}}</span> sẽ quyết định số lượng và việc phân bổ các {{site.data.glossary.task}} cho các {{site.data.glossary.executor}} dựa trên một mô hình đồ thị được sinh ra cho mỗi {{site.data.glossary.job}}. Chú ý là mỗi {{site.data.glossary.worker_node}} có thể xử lý nhiều {{site.data.glossary.task}} của nhiều {{site.data.glossary.job}} khác nhau.
+
+Mỗi {{site.data.glossary.job}} trong Spark là một chuỗi của các hành động có liên quan chéo đến nhau, được định hình trong một {{site.data.glossary.direct_acyclic_graph}} (DAG) như ví dụ dưới đây được lấy ra từ Spark UI. Với đồ thị này, Spark có thể sắp xếp công việc một cách tối ưu nhất (ví dụ như tính toán ra có bao nhiêu {{site.data.glossary.task}} và cần bao nhiêu {{site.data.glossary.worker_node}} để chạy) và thực thi các {{site.data.glossary.task}} đó:
+
+![]({{ "/assets/images/B05793_01_03.jpg" | relative_url }})
+
+[Xem thêm bài viết này để hiểu hơn về cơ chế hoạt động của {{site.data.glossary.dag}} ở đây <http://bit.ly/29WTiK8>]
