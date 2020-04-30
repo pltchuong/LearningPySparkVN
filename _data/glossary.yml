@@ -22,3 +22,4 @@ master_node: <span data-tippy-content="nút chính">master node</span>
 worker_node: <span data-tippy-content="nút phụ">worker node</span>
 direct_acyclic_graph: <span data-tippy-content="đồ thị có định hướng không tuần hoàn">direct acyclic graph</span>
 dag: <span data-tippy-content="đồ thị có định hướng không tuần hoàn">DAG</span>
+immutable: <span data-tippy-content="bất biến">immutable</span>
