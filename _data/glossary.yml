@@ -2,10 +2,14 @@ phan_chuong: <span data-tippy-content="pltchuong@gmail.com">Phan Chương</span>
 tomasz_drabas: <span data-tippy-content="tomasz.drabas@databricks.com">Tomasz Drabas</span>
 denny_lee: <span data-tippy-content="denny.lee@databricks.com">Denny Lee</span>
 
-cto: <span data-tippy-content="Giám đốc công nghệ">CTO</span>
+cto: <span data-tippy-content="giám đốc công nghệ">CTO</span>
 streaming: <span data-tippy-content="liên tục">streaming</span>
 machine_learning: <span data-tippy-content="máy học tự động">machine learning</span>
 data_science: <span data-tippy-content="khoa học dữ liệu">data science</span>
+rdd: <span data-tippy-content="dữ liệu được phân tán có khả năng tự phục hồi">Resilient Distributed Dataset</span>
+dataframe: <span data-tippy-content="bộ dữ liệu">DataFrame</span>
+dataset: <span data-tippy-content="bộ dữ liệu cải tiến">DataFrame</span>
+
 
 driver: <span data-tippy-content="chương trình điều khiển">driver</span>
 executor: <span data-tippy-content="chương trình con">executor</span>
