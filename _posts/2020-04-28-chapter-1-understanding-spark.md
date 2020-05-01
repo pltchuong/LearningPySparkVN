@@ -50,7 +50,7 @@ Mỗi {{site.data.glossary.job}} trong Spark là một chuỗi của các hành 
 
 ![]({{ "/assets/images/B05793_01_03.jpg" | relative_url }})
 
-[Xem thêm bài viết này để hiểu hơn về cơ chế hoạt động của {{site.data.glossary.dag}} ở đây <http://bit.ly/29WTiK8>]
+[Xem thêm bài viết này để hiểu hơn về cơ chế hoạt động của {{site.data.glossary.dag}} <http://bit.ly/29WTiK8>]
 
 ## Resilient Distributed Dataset
 Apache Spark được xây dựng dựa trên một tập hợp các đối tượng {{site.data.glossary.immutable}} trong Java Virtual Machine (JVM) gọi là {{site.data.glossary.resilient_distributed_dataset}} (viết tắt là RDD). Một điều đáng chú ý là trong trường hợp của Python, các đối tượng Python sẽ được lưu lại trong các đối tượng JVM này. Điểm này sẽ được bàn luận kỹ hơn về sau khi ta nói về {{site.data.glossary.rdd}} và {{site.data.glossary.dataframe}}. Những đối tượng này khiến cho {{site.data.glossary.job}} nào cũng sẽ được tính toán siêu nhanh. Các đối tượng {{site.data.glossary.rdd}} sẽ được tính toán, lưu tạm và ghi lại tất cả ngay trong bộ nhớ: một mô hình tính toán mang lại kết quả nhanh vượt trội so với các nền tảng phân tán truyền thống khác như Apache Hadoop.
