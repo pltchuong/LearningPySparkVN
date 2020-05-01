@@ -34,7 +34,7 @@ Apache Spark có thể chạy ngay trên máy tính cá nhân, nhưng cũng có 
 
 Nguồn: Apache Spark chính là chiếc máy điện thoại thông minh trong giới Dữ liệu lớn <http://bit.ly/1QsgaNj>
 
-[Xem thêm bài viết Apache Spark chính là chiếc máy điện thoại thông minh trong giới Dữ liệu lớn ở đây <http://bit.ly/1QsgaNj>]
+> Xem thêm bài viết Apache Spark chính là chiếc máy điện thoại thông minh trong giới Dữ liệu lớn ở đây <http://bit.ly/1QsgaNj>
 
 ## Spark Jobs và Spark APIs
 Trong phần này, ta sẽ xem qua về Spark Jobs và Spark APIs. Đây là những kiến thức nền tảng cho phần sau, kiến trúc của Spark 2.0.
@@ -50,18 +50,18 @@ Mỗi {{site.data.glossary.job}} trong Spark là một chuỗi của các hành 
 
 ![]({{ "/assets/images/B05793_01_03.jpg" | relative_url }})
 
-[Xem thêm bài viết này để hiểu hơn về cơ chế hoạt động của {{site.data.glossary.dag}} <http://bit.ly/29WTiK8>]
+> Xem thêm bài viết này để hiểu hơn về cơ chế hoạt động của {{site.data.glossary.dag}} <http://bit.ly/29WTiK8>
 
 ## Resilient Distributed Dataset
 Apache Spark được xây dựng dựa trên một tập hợp các đối tượng {{site.data.glossary.immutable}} trong Java Virtual Machine (JVM) gọi là {{site.data.glossary.resilient_distributed_dataset}} (viết tắt là RDD). Một điều đáng chú ý là trong trường hợp của Python, các đối tượng Python sẽ được lưu lại trong các đối tượng JVM này. Điểm này sẽ được bàn luận kỹ hơn về sau khi ta nói về {{site.data.glossary.rdd}} và {{site.data.glossary.dataframe}}. Những đối tượng này khiến cho {{site.data.glossary.job}} nào cũng sẽ được tính toán siêu nhanh. Các đối tượng {{site.data.glossary.rdd}} sẽ được tính toán, lưu tạm và ghi lại tất cả ngay trong bộ nhớ: một mô hình tính toán mang lại kết quả nhanh vượt trội so với các nền tảng phân tán truyền thống khác như Apache Hadoop.
 
 Mặt khác, {{site.data.glossary.rdd}} cung cấp một vài hàm cơ bản (như là `map(...)`, `reduce(...)`, and `filter(...)`, ta sẽ nhắc lại chi tiết hơn trong Chương 2, *{{site.data.glossary.resilient_distributed_dataset}}*) để giữ nguyên tính cơ động và khả năng mở rộng sẵn có của Hadoop, từ đó có thể thực hiện một cơ số các loại tính toán khác. {{site.data.glossary.rdd}} thực hiện việc biến đổi dữ liệu bằng các tiến trình chạy song song với nhau, vừa nhanh vừa tránh mất dữ liệu. Bằng việc ghi chép lại quá trình biến đổi này, {{site.data.glossary.rdd}} sẽ nắm được lịch sử thay đổi của dữ liệu - một đồ thị dạng cây lưu lại chi tiết từng bước chuyển đổi một. Hiệu quả của việc này là {{site.data.glossary.rdd}} sẽ không bị mất dữ liệu trong quá trình tính toán - nếu lỡ một mảnh nhỏ của một {{site.data.glossary.rdd}} bị mất, nó sẽ có đủ thông tin để có thể tự tái tạo lại mảnh dữ liệu đó, thay vì phải chạy đi chỗ khác để tìm kiếm một bản sao của mảnh bị mất.
 
-[Xem thêm bài viết này để hiểu hơn về lịch sử thay đổi của dữ liệu <http://ibm.co/2ao9B1t>]
+> Xem thêm bài viết này để hiểu hơn về lịch sử thay đổi của dữ liệu <http://ibm.co/2ao9B1t>
 
 {{site.data.glossary.rdd}} có hai loại tiến trình: *biến đổi* (sẽ trả về con trỏ sang một {{site.data.glossary.rdd}} mới) và *thực thi* (sẽ trả về kết quả cho {{site.data.glossary.driver}} sau khi tính toán); ta sẽ tìm hiểu sâu hơn ở các chương sau.
 
-[Tham khảo Hướng dẫn lập trình Spark ở đây <http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations> để biết thêm về các tiến trình này]
+> Tham khảo Hướng dẫn lập trình Spark ở đây <http://spark.apache.org/docs/latest/programming-guide.html#rdd-operations> để biết thêm về các tiến trình này
 
 Quá trình biến đổi của {{site.data.glossary.rdd}} được gọi là *lười*, ý nói rằng nó không đưa ra kết quả ngay lập tức. Những biến đổi này chỉ được tính toán khi có một tiến trình thực thi được gọi, và kết quả sẽ được trả về cho {{site.data.glossary.driver}}. Kết quả của việc hoãn thực thi này là hiệu suất của các câu lệnh truy vấn có thể được tối ưu hoá hơn rất nhiều. {{site.data.glossary.dag_scheduler}} trong Apache Spark là nơi bắt đầu quá trình tối ưu hoá này - đây là chương trình chuyên để sắp xếp các biến đổi này theo từng {{site.data.glossary.stage}} như hình trên. Và vì các tiến trình trong {{site.data.glossary.rdd}} được chia ra làm *biến đổi* và *thực thi*, nên {{site.data.glossary.dag_scheduler}} có thể thoải mái tối ưu câu truy vấn mà không cần phải xáo trộn toàn bộ dữ liệu (vốn là thao tác tốn tài nguyên nhất)
 
