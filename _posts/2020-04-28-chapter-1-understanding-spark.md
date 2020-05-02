@@ -66,3 +66,41 @@ Mặt khác, {{site.data.glossary.rdd}} cung cấp một vài hàm cơ bản (nh
 Quá trình biến đổi của {{site.data.glossary.rdd}} được gọi là *lười*, ý nói rằng nó không đưa ra kết quả ngay lập tức. Những biến đổi này chỉ được tính toán khi có một tiến trình thực thi được gọi, và kết quả sẽ được trả về cho {{site.data.glossary.driver}}. Kết quả của việc hoãn thực thi này là hiệu suất của các câu lệnh truy vấn có thể được tối ưu hoá hơn rất nhiều. {{site.data.glossary.dag_scheduler}} trong Apache Spark là nơi bắt đầu quá trình tối ưu hoá này - đây là chương trình chuyên để sắp xếp các biến đổi này theo từng {{site.data.glossary.stage}} như hình trên. Và vì các tiến trình trong {{site.data.glossary.rdd}} được chia ra làm *biến đổi* và *thực thi*, nên {{site.data.glossary.dag_scheduler}} có thể thoải mái tối ưu câu truy vấn mà không cần phải xáo trộn toàn bộ dữ liệu (vốn là thao tác tốn tài nguyên nhất)
 
 Để biết thêm thông tin về {{site.data.glossary.dag_scheduler}} và việc tối ưu hoá, vui lòng tham khảo thêm cuốn *High Performance Spark*, Chương 5 *Effective Transformations*, phân *Narrow vs. Wide Transformations* <https://smile.amazon.com/High-Performance-Spark-Practices-Optimizing/dp/1491943203>.
+
+### DataFrames
+Cũng như {{site.data.glossary.rdd}}, {{site.data.glossary.dataframe}} là một tập hợp dữ liệu {{site.data.glossary.immutable}} được phân tán trên khắp các {{site.data.glossary.dag_scheduler}} trong một hệ thống máy chủ. Điểm khác biệt là dữ liệu trong {{site.data.glossary.dataframe}} được sắp xếp theo tên theo cột.
+
+> Ai quen thuộc với `pandas` trong Python hoặc `data.frames` trong R sẽ thấy định nghĩa này hoàn toàn tương tự
+
+{{site.data.glossary.dataframe}} được thiết kế để việc xử lý được lượng dữ liệu lớn còn dễ dàng hơn nữa. Lập trình viên giờ đã có thể dựng lên được cấu trúc của dữ liệu, cho phép trừu tượng hoá dữ liệu ở mức độ cao hơn; hiểu theo nghĩa khác thì {{site.data.glossary.dataframe}} tương đương với khái niệm bảng trong thế giới cơ sở dữ liệu quan hệ. {{site.data.glossary.dataframe}} có các API đặc biệt để thao tác với dữ liệu được phân tán, khiến Spark thân thiện hơn với nhiều chuyên gia khác chứ không chỉ mỗi giới {{site.data.glossary.data_engineer}}.
+
+Một trong những lợi ích lớn nhất mà {{site.data.glossary.dataframe}} mang lại là Spark đầu tiên sẽ dựng lên một {{site.data.glossary.logical_plan}}, sau đó {{site.data.glossary.cost_optimizer}} sẽ tính toán ra một {{site.data.glossary.physical_plan}} và sinh ra các đoạn mã tối ưu, cuối cùng Spảk sẽ chạy những đoạn mã này. Không như {{site.data.glossary.rdd}} khi mà Python chạy chậm hơn đáng kể so với Java hoặc Scala, {{site.data.glossary.dataframe}} mang lại hiệu năng tương đương bất kể là ngôn ngữ nào.
+
+### Datasets
+Được giới thiệu từ Spark 1.6, mục tiêu của Spark {{site.data.glossary.dataset}} là đưa ra một API vừa dễ áp dụng trên dữ liệu, vừa đạt hiệu suất tốt, vừa thừa kế bộ máy tuyệt vởi của Spark SQL. Đáng tiếc là vào thời điểm quyển sách này được viết ra, {{site.data.glossary.dataset}} chỉ có trên Scala hoặc Java. Một khi PySpark hỗ trợ, chúng tôi sẽ cập nhật trong lần tái bản sau.
+
+### Catalyst Optimizer
+Spark SQL là một trong những thành phần trong Spark có kỹ thuật phức tạp nhất, vì đây là khởi nguồn sức mạnh của các câu lệnh truy vấn và {{site.data.glossary.dataframe}}. Trung tâm của Spark SQL là chương trình tối ưu hoá câu lệnh truy vấn Catalyst Optimizer. Dựa trên ý tưởng của {{site.data.glossary.functional_programming}}, chương trình này được thiết kế ra với hai mục tiêu: Tích hợp các phương pháp tối ưu hoá mới, các chức năng mới vào Spark SQL và cho phép lập trình viên có thể mở rộng thêm (như là thêm vào các quy tắc riêng biệt tuỳ nguồn dữ liệu, hỗ trợ kiểu dữ liệu mới, v.v...)
+
+![]({{ "/assets/images/B05793_01_04.jpg" | relative_url }})
+
+> Xem thêm *Deep Dive into Spark SQL's Catalyst Optimizer* <http://bit.ly/271I7Dk> và *Apache Spark DataFrames: Simple and Fast Analysis of Structured Data* <http://bit.ly/29QbcOV>
+
+### Project Tungsten
+
+Tungsten là tên một dự án tổng hợp của bộ máy xử lý trong Apache Spark. Dự án này tập trung vào việc cải thiện để các thuật toán trong Spark sử dụng bộ nhớ và vi xử lý hiệu quả hơn, sử dụng tối đa hiệu năng của các phần cứng hiện đại.
+
+Dự án này gồm:
+- Loại bỏ chi phí quản lý của các đối tượng trong JVM, loại bỏ luôn bộ thu gom rác trong Java, từ đó tối ưu việc sử dụng bộ nhớ.
+- Tận dụng bộ nhớ phân cấp để thiết kế các thuật toán và cấu trúc dữ liệu phù hợp.
+- Tận dụng các trình biên dịch mới để tự sinh ra các đoạn mã, từ đó tối ưu việc sử dụng vi xử lý.
+- Loại bỏ việc điều phối các hàm ảo, từ đó giảm số lượng gọi các vi xử lý.
+- Tận dụng kỹ thuật lập trình bậc thấp (như tải thẳng dữ liệu vào các thanh ghi của vi xử lý) để tăng tốc độ truy cập bộ nhớ, từ đó cho phép bộ máy của Spark tăng hiệu quả của việc biên dịch và chạy các vòng lặp đơn giản.
+
+> Xem thêm
+
+> *Project Tungsten: Bringing Apache Spark Closer to Bare Metal* <https://databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html>
+
+> *Deep Dive into Project Tungsten: Bringing Spark Closer to Bare Metal [SSE 2015 Video and Slides]* <https://spark-summit.org/2015/events/deep-dive-into-project-tungsten-bringing-spark-closer-to-bare-metal/>
+
+> *Apache Spark as a Compiler: Joining a Billion Rows per Second on a Laptop* <https://databricks.com/blog/2016/05/23/apache-spark-as-a-compiler-joining-a-billion-rows-per-second-on-a-laptop.html>
