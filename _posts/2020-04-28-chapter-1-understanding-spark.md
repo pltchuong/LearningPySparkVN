@@ -32,7 +32,7 @@ Apache Spark có thể chạy ngay trên máy tính cá nhân, nhưng cũng có 
 
 ![]({{ "/assets/images/B05793_01_01.jpg" | relative_url }})
 
-Nguồn: Apache Spark chính là chiếc máy điện thoại thông minh trong giới Dữ liệu lớn <http://bit.ly/1QsgaNj>
+Nguồn: Apache Spark is the Smartphone of Big Data <http://bit.ly/1QsgaNj>
 
 > Xem thêm bài viết Apache Spark chính là chiếc máy điện thoại thông minh trong giới Dữ liệu lớn ở đây <http://bit.ly/1QsgaNj>
 
