@@ -16,8 +16,8 @@ Trong chương này, ta sẽ học những thành phần cơ bản nhất của 
 Các chủ đề bao gồm:
 - Apache Spark là gì?
 - Spark Jobs và Spark APIs
-- Khái quát về cấu trúc dữ liệu {{site.data.glossary.resilient_distributed_dataset}} (RDD), {{site.data.glossary.dataframe}}, và {{site.data.glossary.dataset}}
-- Khái quát về Chương trình tối ưu hoá câu lệnh truy vấn Catalyst Optimizer và Chương trình tối ưu hoá tài nguyên máy tính Project Tungsten
+- Khái quát về {{site.data.glossary.resilient_distributed_dataset}} (RDD), {{site.data.glossary.dataframe}}, và {{site.data.glossary.dataset}}
+- Khái quát về {{site.data.glossary.catalyst_optimizer}} và {{site.data.glossary.project_tungsten}}
 - Khái quát về thiết kế kiến trúc của Spark 2.0
 
 ## Apache Spark là gì?
@@ -32,7 +32,7 @@ Apache Spark có thể chạy ngay trên máy tính cá nhân, nhưng cũng có 
 
 ![]({{ "/assets/images/B05793_01_01.jpg" | relative_url }})
 
-Nguồn: Apache Spark is the Smartphone of Big Data <http://bit.ly/1QsgaNj>
+*Nguồn: Apache Spark is the Smartphone of Big Data <http://bit.ly/1QsgaNj>*
 
 > Xem thêm Apache Spark is the Smartphone of Big Data <http://bit.ly/1QsgaNj>
 
@@ -80,7 +80,7 @@ Một trong những lợi ích lớn nhất mà {{site.data.glossary.dataframe}}
 Được giới thiệu từ Spark 1.6, mục tiêu của Spark {{site.data.glossary.dataset}} là đưa ra một API vừa dễ áp dụng trên dữ liệu, vừa đạt hiệu suất tốt, vừa thừa kế bộ máy tuyệt vởi của Spark SQL. Đáng tiếc là vào thời điểm quyển sách này được viết ra, {{site.data.glossary.dataset}} chỉ có trên Scala hoặc Java. Một khi PySpark hỗ trợ, chúng tôi sẽ cập nhật trong lần tái bản sau.
 
 ### Catalyst Optimizer
-Spark SQL là một trong những thành phần trong Spark có kỹ thuật phức tạp nhất, vì đây là khởi nguồn sức mạnh của các câu lệnh truy vấn và {{site.data.glossary.dataframe}}. Trung tâm của Spark SQL là chương trình tối ưu hoá câu lệnh truy vấn Catalyst Optimizer. Dựa trên ý tưởng của {{site.data.glossary.functional_programming}}, chương trình này được thiết kế ra với hai mục tiêu: Tích hợp các phương pháp tối ưu hoá mới, các chức năng mới vào Spark SQL và cho phép lập trình viên có thể mở rộng thêm (như là thêm vào các quy tắc riêng biệt tuỳ nguồn dữ liệu, hỗ trợ kiểu dữ liệu mới, v.v...)
+Spark SQL là một trong những thành phần trong Spark có kỹ thuật phức tạp nhất, vì đây là khởi nguồn sức mạnh của các câu lệnh truy vấn và {{site.data.glossary.dataframe}}. Trung tâm của Spark SQL là {{site.data.glossary.catalyst_optimizer}}. Dựa trên ý tưởng của {{site.data.glossary.functional_programming}}, chương trình này được thiết kế ra với hai mục tiêu: Tích hợp các phương pháp tối ưu hoá mới, các chức năng mới vào Spark SQL và cho phép lập trình viên có thể mở rộng thêm (như là thêm vào các quy tắc riêng biệt tuỳ nguồn dữ liệu, hỗ trợ kiểu dữ liệu mới, v.v...)
 
 ![]({{ "/assets/images/B05793_01_04.jpg" | relative_url }})
 
@@ -104,3 +104,76 @@ Dự án này gồm:
 > *Deep Dive into Project Tungsten: Bringing Spark Closer to Bare Metal [SSE 2015 Video and Slides]* <https://spark-summit.org/2015/events/deep-dive-into-project-tungsten-bringing-spark-closer-to-bare-metal/>
 
 > *Apache Spark as a Compiler: Joining a Billion Rows per Second on a Laptop* <https://databricks.com/blog/2016/05/23/apache-spark-as-a-compiler-joining-a-billion-rows-per-second-on-a-laptop.html>
+
+## Kiến trúc của Spark 2.0
+Apache Spark phiên bản 2.0 được phát hành dựa trên những kinh nghiệm được đúc rút ra trong suốt hai năm phát triển dự án Apache Spark:
+
+![]({{ "/assets/images/B05793_01_05.jpg" | relative_url }})
+
+*Nguồn: Apache Spark 2.0: Faster, Easier, and Smarter <http://bit.ly/2ap7qd5>*
+
+Ba điểm nhấn trong Apache Spark 2.0 xoay quanh việc cải thiện hiệu năng (nhờ {{site.data.glossary.project_tungsten}} giai đoạn 2), ra mắt {{site.data.glossary.structured_streaming}} và sự hợp nhất giữa {{site.data.glossary.dataset}} và {{site.data.glossary.dataframe}}. {{site.data.glossary.dataset}} vì đó là một phần của Spark 2.0, mặc dù hiện tại nó chỉ làm việc với Scala và Java.
+
+> Xem thêm các bài nói về Spark 2.0 của các lập trình viên nòng cốt trong cộng đồng Spark.
+
+> *Apache Spark 2.0: Faster, Easier, and Smarter* của *Reynold Xin* <http://bit.ly/2ap7qd5>
+
+> *Structuring Spark: DataFrames, Datasets, and Streaming* của *Michael Armbrust* <http://bit.ly/2ap7qd5>
+
+> *A Deep Dive into Spark Streaming* của Tathagata Das <http://bit.ly/2aHt1w0>
+
+> *Apache Spark MLlib 2.0 Preview: Data Science and Production* của *Joseph Bradley* <http://bit.ly/2aHrOVN>
+
+### Sự hợp nhất giữa Dataset và DataFrame
+Như đã nói ở phần trước, {{site.data.glossary.dataset}} (vào thời điểm viết cuốn sách này) chỉ dành cho Scala và Java. Tuy nhiên, ta sẽ nói qua về bối cảnh chung để hiểu hơn về định hướng của Spark 2.0.
+
+{{site.data.glossary.dataset}} được ra mắt từ 2015 trong phiên bản Apache Spark 1.6. Mục đích của {{site.data.glossary.dataset}} là cung cấp một giao diện lập trình {{site.data.glossary.type_safe}}. Lập trình viên nhờ đó có thể làm việc với dữ liệu bán cấu trúc (như kiểu JSON hoặc kiểu cặp key-value) mà vẫn đảm bảo {{site.data.glossary.type_safe}} vào thời điếm biên dịch (tức là có thể phát hiện ra lỗi của các ứng dụng trước khi chạy). Đó cũng là một phần lý do tại sao Python chưa được {{site.data.glossary.dataset}} hỗ trợ, Python không phải là một ngôn ngữ lập trình {{site.data.glossary.type_safe}}.
+
+Một điểm quan trọng khác, {{site.data.glossary.dataset}} API có các thao tác bậc cao như `sum()`, `avg()`, `join()`, và `group()`. Điều này có nghĩa là ta vừa có nguyên tính linh hoạt của Spark {{site.data.glossary.rdd}}, code lại dễ viết dễ đọc. Tương tự như {{site.data.glossary.dataframe}}, {{site.data.glossary.dataset}} cũng được hưởng lợi từ {{site.data.glossary.catalyst_optimizer}} do nối các biểu thức và trường dữ liệu vào câu lệnh truy vấn, đồng thời tận dụng được cơ chế mã hoá trên bộ nhớ siêu nhanh của {{site.data.glossary.project_tungsten}}.
+
+Biểu đồ sau ghi lại lịch sử phát triển của Spark API từ {{site.data.glossary.rdd}} đến {{site.data.glossary.dataframe}} rồi {{site.data.glossary.dataset}}:
+
+![]({{ "/assets/images/B05793_01_06.jpg" | relative_url }})
+
+*Nguồn: Từ webinar Apache Spark 1.5: What is the difference between a DataFrame and a RDD? <http://bit.ly/29JPJSA>*
+
+Việc hợp nhất giữa {{site.data.glossary.dataframe}} API và {{site.data.glossary.dataset}} API sẽ tạo ra những thay đổi lớn ảnh hưởng đến tính tương thích với các phiên bản cũ. Đây là lí do chính khiến Apache Spark 2.0 là một phiên bản chính (trái với các phiên bản phụ 1.x thường giảm thiểu những thay đổi lớn kiểu này). Với biểu đồ dưới đây, ta có thể thấy {{site.data.glossary.dataframe}} và {{site.data.glossary.dataset}} đều thuộc về {{site.data.glossary.dataset}} API mới trong Apache Spark 2.0:
+
+![]({{ "/assets/images/B05793_01_07.jpg" | relative_url }})
+
+Như đã nói, {{site.data.glossary.dataset}} có giao diện lập trình {{site.data.glossary.type_safe}}, hướng đối tượng. {{site.data.glossary.dataset}} được hưởng lợi từ {{site.data.glossary.catalyst_optimizer}} do nối các biểu thức và trường dữ liệu vào câu lệnh truy vấn, đồng thời tận dụng được cơ chế mã hoá trên bộ nhớ siêu nhanh của {{site.data.glossary.project_tungsten}}. Nhưng giờ vì đã hợp nhất với {{site.data.glossary.dataset}} ở Apache Spark 2.0, {{site.data.glossary.dataframe}} giờ chính là {{site.data.glossary.dataset}} nhưng không có kiểu. Nói một cách cụ thể thì:
+
+```scala
+DataFrame = Dataset[Row]
+```
+
+### Giới thiệu SparkSession
+Trước đây, muốn chạy được các câu truy vấn trong Spark, ta phải làm việc với `SparkConf` để cấu hình Spark, `SparkContext` để lấy {{site.data.glossary.context}} của Spark, `SQLContext` để lấy {{site.data.glossary.context}} của SQL và `HiveContext` để lấy {{site.data.glossary.context}} của Hive. `SparkSession` về cơ bản là gộp chung hết những {{site.data.glossary.context}} này lại, thêm cả `StreamingContext` nữa.
+
+Ví dụ, thay vì viết
+
+```python
+df = sqlContext.read \
+    .format('json').load('py/test/sql/people.json')
+```
+
+giờ ta có thể viết:
+
+```python
+df = spark.read.format('json').load('py/test/sql/people.json')
+```
+
+hoặc:
+```python
+df = spark.read.json('py/test/sql/people.json')
+```
+
+`SparkSession` giờ là đầu mối để đọc dữ liệu, làm việc với metadata, cấu hình ứng dụng và quản lý luôn tài nguyên của cụm máy chủ.
+
+### Dự án Tungsten giai đoạn 2
+Theo những quan sát sát sao về bức tranh toàn cảnh của phấn cứng máy tính vào thời điểm dự án được bắt đầu, trong khi *chỉ số hiệu năng/giá thành* của bộ nhớ RAM, ổ cứng và (ở một mức độ nào đó) các giao diện mạng đều được cải thiện, thì *chỉ số hiệu năng/giá thành* của CPU không được tốt như thế. Mặc dù các nhà sản xuất phần cứng có thể thêm nhiều lõi vào mỗi khe cắm (tức là tăng hiệu suất thống qua xử lý song song), tốc độ thực tế của các lõi lại không có những cải thiện đáng kể nào.
+
+{{site.data.glossary.project_tungsten}} được ra mắt từ năm 2015 khiến bộ máy bên trong Spark được thay đổi đáng kể. Giai đoạn đầu tiên của những cải thiện này tập trung vào các khía cạnh sau:
+- Quản lý bộ nhớ và xử lý nhị phân: ~~Leveraging application semantics to manage memory explicitly~~ và loại bỏ chi phí quản lý đối tượng dữ liệu trong JVM cũng như bộ thu gom rác.
+- Tính toán dựa vào bộ nhớ sẵn: viết lại các thuật toán và cấu trúc dữ liệu tận dụng bộ nhớ phân cấp.
+- Cơ chế tự sinh code: sử dụng cơ chế tự sinh code để tận dụng các chương trình biên dịch hiện đại cũng như các vi xử lý.
