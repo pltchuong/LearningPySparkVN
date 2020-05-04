@@ -7,6 +7,16 @@ body {
   color: #aaa;
 }
 
+#main_content {
+
+  small {
+
+    &:last-child {
+      display: none;
+    }
+  }
+}
+
 [data-tippy-content] {
   text-decoration: underline dashed;
   text-underline-position: under;
