@@ -227,3 +227,10 @@ Altogether, Apache Spark 2.0 not only unified DataFrames and Datasets but also u
 Together, you can now build end-to-end **continuous applications**, in which you can issue the same queries to batch processing as to real-time data, perform ETL, generate reports, update or track specific data in the stream.
 
 > For more information on continuous applications, please refer to Matei Zaharia's blog post Continuous Applications: Evolving Streaming in Apache Spark 2.0 - A foundation for end-to-end real-time applications <http://bit.ly/2aJaSOr>.
+
+## Summary
+In this chapter, we reviewed what is Apache Spark and provided a primer on Spark Jobs and APIs. We also provided a primer on Resilient Distributed Datasets (RDDs), DataFrames, and Datasets; we will dive further into RDDs and DataFrames in subsequent chapters. We also discussed how DataFrames can provide faster query performance in Apache Spark due to the Spark SQL Engine's Catalyst Optimizer and Project Tungsten. Finally, we also provided a high-level overview of the Spark 2.0 architecture including the Tungsten Phase 2, Structured Streaming, and Unifying DataFrames and Datasets.
+
+In the next chapter, we will cover one of the fundamental data structures in Spark: The Resilient Distributed Datasets, or RDDs. We will show you how to create and modify these schema-less data structures using transformers and actions so your journey with PySpark can begin.
+
+Before we do that, however, please, check the link <http://www.tomdrabas.com/site/book> for the Bonus Chapter 1 where we outline instructions on how to install Spark locally on your machine (unless you already have it installed). Here's a direct link to the manual: <https://www.packtpub.com/sites/default/files/downloads/InstallingSpark.pdf>.
