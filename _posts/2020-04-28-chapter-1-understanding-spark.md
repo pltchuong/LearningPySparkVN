@@ -177,3 +177,53 @@ Theo những quan sát sát sao về bức tranh toàn cảnh của phấn cứn
 - Quản lý bộ nhớ và xử lý nhị phân: ~~Leveraging application semantics to manage memory explicitly~~ và loại bỏ chi phí quản lý đối tượng dữ liệu trong JVM cũng như bộ thu gom rác.
 - Tính toán dựa vào bộ nhớ sẵn: viết lại các thuật toán và cấu trúc dữ liệu tận dụng bộ nhớ phân cấp.
 - Cơ chế tự sinh code: sử dụng cơ chế tự sinh code để tận dụng các chương trình biên dịch hiện đại cũng như các vi xử lý.
+
+The following diagram is the updated Catalyst engine to denote the inclusion of Datasets. As you see at the right of the diagram (right of the Cost Model), **Code Generation** is used against the selected physical plans to generate the underlying RDDs:
+
+![]({{ "/assets/images/B05793_01_08.jpg" | relative_url }})
+
+*Nguồn: Structuring Spark: DataFrames, Datasets, and Streaming <http://bit.ly/2cJ508x>*
+
+As part of Tungsten Phase 2, there is the push into whole-stage code generation. That is, the Spark engine will now generate the byte code at compile time for the entire Spark stage instead of just for specific jobs or tasks. The primary facets surrounding these improvements include:
+
+- No virtual function dispatches: This reduces multiple CPU calls that can have a profound impact on performance when dispatching billions of times
+- Intermediate data in memory vs CPU registers: Tungsten Phase 2 places intermediate data into CPU registers. This is an order of magnitude reduction in the number of cycles to obtain data from the CPU registers instead of from memory
+- Loop unrolling and SIMD: Optimize Apache Spark's execution engine to take advantage of modern compilers and CPUs' ability to efficiently compile and execute simple for loops (as opposed to complex function call graphs)
+
+> Xem thêm để hiểu sâu hơn về {{site.data.glossary.project_tungsten}}
+
+> *Apache Spark Key Terms, Explained* <https://databricks.com/blog/2016/06/22/apache-spark-key-terms-explained.html>
+
+> *Apache Spark as a Compiler: Joining a Billion Rows per Second on a Laptop* <https://databricks.com/blog/2016/05/23/apache-spark-as-a-compiler-joining-a-billion-rows-per-second-on-a-laptop.html>
+
+> *Project Tungsten: Bringing Apache Spark Closer to Bare Metal* <https://databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html>
+
+
+### Structured Streaming
+As quoted by Reynold Xin during Spark Summit East 2016:
+
+> "The simplest way to perform streaming analytics is not having to reason about streaming."
+
+This is the underlying foundation for building Structured Streaming. While streaming is powerful, one of the key issues is that streaming can be difficult to build and maintain. While companies such as Uber, Netflix, and Pinterest have Spark Streaming applications running in production, they also have dedicated teams to ensure the systems are highly available.
+
+> For a high-level overview of Spark Streaming, please review Spark Streaming: What Is It and Who's Using It? http://bit.ly/1Qb10f6
+
+As implied previously, there are many things that can go wrong when operating Spark Streaming (and any streaming system for that matter) including (but not limited to) late events, partial outputs to the final data source, state recovery on failure, and/or distributed reads/writes:
+
+![]({{ "/assets/images/B05793_01_09.jpg" | relative_url }})
+
+*Nguồn: A Deep Dive into Structured Streaming <http://bit.ly/2aHt1w0>*
+
+Therefore, to simplify Spark Streaming, there is now a single API that addresses both batch and streaming within the Apache Spark 2.0 release. More succinctly, the high-level streaming API is now built on top of the Apache Spark SQL Engine. It runs the same queries as you would with Datasets/DataFrames providing you with all the performance and optimization benefits as well as benefits such as event time, windowing, sessions, sources, and sinks.
+
+### Continuous applications
+
+Altogether, Apache Spark 2.0 not only unified DataFrames and Datasets but also unified streaming, interactive, and batch queries. This opens a whole new set of use cases including the ability to aggregate data into a stream and then serving it using traditional JDBC/ODBC, to change queries at run time, and/or to build and apply ML models in for many scenario in a variety of latency use cases:
+
+![]({{ "/assets/images/B05793_01_10.jpg" | relative_url }})
+
+*Nguồn: Apache Spark Key Terms, Explained <https://databricks.com/blog/2016/06/22/apache-spark-key-terms-explained.html>*
+
+Together, you can now build end-to-end **continuous applications**, in which you can issue the same queries to batch processing as to real-time data, perform ETL, generate reports, update or track specific data in the stream.
+
+> For more information on continuous applications, please refer to Matei Zaharia's blog post Continuous Applications: Evolving Streaming in Apache Spark 2.0 - A foundation for end-to-end real-time applications <http://bit.ly/2aJaSOr>.
