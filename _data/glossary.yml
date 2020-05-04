@@ -36,3 +36,5 @@ type_safe: <span data-tippy-content="kiểu an toàn">type-safe</span>
 catalyst_optimizer: <span data-tippy-content="Chương trình tối ưu hoá câu lệnh truy vấn">Catalyst Optimizer</span>
 project_tungsten: <span data-tippy-content="Chương trình tối ưu hoá tài nguyên máy tính">Project Tungsten</span>
 context: <span data-tippy-content="ngữ cảnh">context</span>
+
+jvm: <span data-tippy-content="máy ảo Java">JVM</span>
