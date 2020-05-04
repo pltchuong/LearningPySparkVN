@@ -13,7 +13,7 @@ Apache Spark nhanh, dễ dùng, cho phép ta xử lý các kiểu dữ liệu v�
 
 Trong chương này, ta sẽ học những thành phần cơ bản nhất của Apache Spark. Ta sẽ nói về các khái niệm trong Spark Jobs và Spark APIs, giới thiệu về kiến trúc và tìm hiểu các khả năng của Spark 2.0.
 
-Các chủ đề bao gồm:
+Các chủ đề trong chương này bao gồm:
 - Apache Spark là gì?
 - Spark Jobs và Spark APIs
 - Khái quát về {{site.data.glossary.resilient_distributed_dataset}} (RDD), {{site.data.glossary.dataframe}}, và {{site.data.glossary.dataset}}
