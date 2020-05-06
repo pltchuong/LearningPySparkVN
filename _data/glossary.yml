@@ -38,3 +38,4 @@ project_tungsten: <span data-tippy-content="Chương trình tối ưu hoá tài 
 context: <span data-tippy-content="ngữ cảnh">context</span>
 
 jvm: <span data-tippy-content="máy ảo Java">JVM</span>
+lambda: <span data-tippy-content="hàm vô danh">Lambda</span>
