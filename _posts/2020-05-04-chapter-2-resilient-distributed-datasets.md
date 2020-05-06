@@ -154,3 +154,18 @@ data_from_file_conv = data_from_file.map(extractInformation)
 Chạy câu lệnh `data_from_file_conv.take(1)` sẽ đưa ra kết quả như sau (đã được thu gọn lại):
 
 ![]({{ "/assets/images/B05793_02_02.jpg" | relative_url }})
+
+## Global versus local scope
+Một trong những cái mà ta, một lập trình viên PySpark trong tương lai, phải làm quen đó là đặc tính xử lý song song của Spark. Dù cho ta có quen với Python thế nào đi chăng nữa, muốn viết và chạy code PySpark ta phải thay đổi cách suy nghĩ một chút.
+
+Spark có thể chạy trên hai chế độ: local mode và cluster mode. Code khi chạy Spark với chế độ local mode không khác lắm so với code khi chạy Python: thay đổi chủ yếu chỉ là cú pháp viết code, với chút xoắn não là cả dữ liệu và code có thể được gửi qua lại giữa các worker processes.
+
+Tuy nhiên, mang nguyên chỗ code đó và triển khai lên một cluster có thể sẽ khiến ta vò đầu bứt tai nếu không cẩn thận. Ta buộc phải hiểu cách Spark chạy một job trên cluster.
+
+Trong cluster mode, khi một job được đưa lên để chạy, job sẽ được gửi tới driver (còn gọi là master) node. Driver node sẽ tạo ra một DAG (*xem lại Chương 1, Tìm hiẻu về Spark*) cho job đó và quyết định executor (còn gọi là worker) node nào sẽ thực hiện task cụ thể nào.
+
+Driver sau đó sẽ gửi các chỉ thị đến cho các worker để thực hiện các từng task yêu cầu gửi trả lại kết quả cho driver khi làm xong. Tuy nhiên trước đó, driver phải chuẩn bị từng nội dung từng task: Một tập hợp các giá trị và hàm hiện đang nằm trên driver sẽ được phân phối đến worker để worker làm việc trên các dữ liệu từ RDD.
+
+Tập hợp các giá trị và hàm này được được xem là *tĩnh* trong tình trạng của các executor, tức là, mỗi executor được nhận một *bản sao* của tập hợp các giá trị và hàm từ driver. Nếu, trong khi đang làm viêc, executor cần phải thay đổi các giá trị hoặc ghi đè các hàm, nó sẽ **không** gây ảnh hưởng đến những bản sao trên các executor còn lại cũng như bản gốc trên driver. Việc này có khả năng gây ra một vài tình huống không lường trước được và những bug chỉ xảy ra lúc chạy thật này thi thoảng rất khó đề dò ra.
+
+> Check out this discussion in PySpark's documentation for a more hands-on example: <http://spark.apache.org/docs/latest/programming-guide.html#local-vs-cluster-modes>.
