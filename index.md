@@ -3,7 +3,7 @@ Tác giả: **{{site.data.glossary.tomasz_drabas}}** và **{{site.data.glossary.
 Người dịch: **{{site.data.glossary.phan_chuong}}**
 
 <ul>
-  {% for post in site.posts %}
+  {% for post in site.posts reversed %}
     <li>
       <a href="{{ post.url | relative_url }}">
       {% if post.number %}
